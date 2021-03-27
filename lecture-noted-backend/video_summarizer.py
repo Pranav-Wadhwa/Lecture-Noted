@@ -1,5 +1,8 @@
 import openai
-from credentials import CREDENTIALS
+try:
+    from credentials import CREDENTIALS
+except:
+    CREDENTIALS = os.environ
 
 # returns a list of strings, returns None if failed
 def summarize(text):
