@@ -37,6 +37,9 @@ def process_text(text):
 
 		cur_point += 1
 		cur_str = f'{cur_point + 1}.'
+
+	if len(points) == 0:
+		return None
 	return points
 
 def clean_point(text):
