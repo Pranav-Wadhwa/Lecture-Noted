@@ -29,17 +29,29 @@ def chunk(text):
     return toreturn
 
 
+def get_metadata(video_id):
+	url = "https://www.youtube.com/watch?v=%s" % video_crash_course_bool
+	video = pafy.new(url)
 
+	obj = {
+		'title': video.title,
+		'rating': video.rating,
+		'viewcount': video.viewcount,
+		'author': video.author,
+		'duration': video.duration,
+		'likes': video.likes,
+		'dislikes': video.dislikes,
+		# 'description': video.description, # for some reason this throws an error
+	}
+
+	return obj
 
 
 video_coding_adventures = 'bqtqltqcQhw'
 video_crash_course_bool = 'gI-qXk7XojA'
 video_crash_course_disease = '1PLBmUVYYeg'
 
-url = "https://www.youtube.com/watch?v=%s" % video_crash_course_bool
-video = pafy.new(url)
-
-print(video)
+print(get_metadata(video_crash_course_bool))
 
 # trans = get_transcript(video_crash_course_disease)
 # print(trans)
