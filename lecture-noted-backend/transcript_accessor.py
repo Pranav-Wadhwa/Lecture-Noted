@@ -4,8 +4,8 @@ from youtube_transcript_api import YouTubeTranscriptApi
 #import os
 #os.environ["PAFY_BACKEND"] = "internal"
 import pafy
-# pip install python-youtube
-# 	https://pypi.org/project/python-youtube/
+# pip install pafy
+# 	https://pypi.org/project/pafy/
 
 CHUNK_LENGTH = 300
 
@@ -55,7 +55,7 @@ video_coding_adventures = 'bqtqltqcQhw'
 video_crash_course_bool = 'gI-qXk7XojA'
 video_crash_course_disease = '1PLBmUVYYeg'
 
-print(get_metadata(video_crash_course_bool))
+# print(get_metadata(video_crash_course_bool))
 
 # trans = get_transcript(video_crash_course_disease)
 # print(trans)

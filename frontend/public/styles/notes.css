@@ -1,0 +1,97 @@
+.Notes {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Notes-container {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 32px 32px;
+}
+
+.Notes-titleDesc {
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.5;
+    align-self: flex-start;
+}
+
+.Notes-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.Notes-headerLeft {
+    flex: 1;
+    margin-right: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Notes-title {
+    font-size: 28px;
+}
+
+.Notes-headerCreator {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.Notes-creatorPFP {
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    margin-right: 8px;
+}
+
+.Notes-creatorName {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.Notes-spacer {
+    flex: 1;
+}
+
+.Notes-videoLink {
+    width: 150px;
+    height: 32px;
+    background: var(--main);
+    flex: 0 0 auto;
+    transition: all 0.3s;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.Notes-videoLink:hover {
+    background: var(--main-dark);
+}
+
+.Notes-videoLink2 {
+    height: 32px;
+    text-decoration: underline;
+    color: var(--main-dark);
+    font-weight: 700;
+}
+
+.Notes-text {
+    font-size: 16px;
+}
