@@ -51,7 +51,7 @@ video_coding_adventures = 'bqtqltqcQhw'
 video_crash_course_bool = 'gI-qXk7XojA'
 video_crash_course_disease = '1PLBmUVYYeg'
 
-print(get_metadata(video_crash_course_bool))
+# print(get_metadata(video_crash_course_bool))
 
 # trans = get_transcript(video_crash_course_disease)
 # print(trans)
