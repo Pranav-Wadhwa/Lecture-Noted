@@ -1,6 +1,11 @@
 #Heroku
 credentials.py
 
+#Other non-needed files
+.DS_Store
+__pycache__
+
+
 # Logs
 logs
 *.log

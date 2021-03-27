@@ -1,5 +1,10 @@
 from flask import Flask
-from credentials import CREDENTIALS
+import os
+
+try:
+    from credentials import CREDENTIALS
+except:
+    CREDENTIALS = os.environ
 
 app = Flask(__name__)
 
