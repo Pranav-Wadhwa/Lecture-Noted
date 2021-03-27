@@ -18,7 +18,7 @@ def summarize(text):
 		top_p=1, frequency_penalty=0, presence_penalty=0.1, best_of=1,
 		max_tokens=80)
 	answer = response.choices[0].text.strip()
-	print('raw:', answer, '\n')
+	#print('raw:', answer, '\n')
 	answer = process_text(answer)
 	return answer
 
@@ -102,7 +102,7 @@ can also write binary as 1’s and 0’s instead of true’s and false’s – t
 just different expressions of the same signal – but we’ll talk more about that 
 in the next episode.'''
 
-print(summarize(sample_text))
+#print(summarize(sample_text))
 
 sample_response = '''Binary is a way to represent true and false using electricity.
 

@@ -2,6 +2,8 @@ from youtube_transcript_api import YouTubeTranscriptApi
 # pip install youtube_transcript_api
 # 	https://pypi.org/project/youtube-transcript-api/
 
+CHUNK_LENGTH = 300
+
 def get_transcript(video):
 	raw = YouTubeTranscriptApi.get_transcript(video)
 	trans = ''
@@ -13,6 +15,18 @@ def get_transcript(video):
 
 def strip_text(text):
 	return text.replace('\n', ' ').replace('\t', ' ')
+
+def chunk(text):
+    text = text.split(" ")
+    toreturn = []
+
+    for i in range(0, len(text)//CHUNK_LENGTH+1):
+        toreturn.append(' '.join(text[i*200:min((i+1)*200, len(text))]))
+
+    return toreturn
+
+
+
 
 
 video_coding_adventures = 'bqtqltqcQhw'

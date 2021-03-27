@@ -8,6 +8,7 @@ except:
 
 from credentials import CREDENTIALS
 import transcript_accessor as trans
+import video_summarizer as vid_sum
 
 app = Flask(__name__)
 
@@ -15,10 +16,26 @@ app = Flask(__name__)
 def index():
     return "Main page lecture noted"
 
-#returns text from youtube video
-@app.route('/process/<string:vid>')
-def video(vid):
+#returns text from youtube video, vid is id of youtube video
+@app.route('/transcript/<string:vid>')
+def transcript(vid):
     return trans.get_transcript(vid)
+
+@app.route('/notes/<string:vid>')
+def notes(vid):
+    transcript = trans.get_transcript(vid)
+    chunks = trans.chunk(transcript)
+
+    data = []
+    for chunk in chunks:
+        data = data + vid_sum.summarize(chunk)
+
+    for i in range(0, len(data)):
+        data[i] = {"type": "text", "data": data[i]}
+
+    print(data)
+
+    return {"response": data}
 
 #TODO
 #Method to take youtube vid, returns transcript
