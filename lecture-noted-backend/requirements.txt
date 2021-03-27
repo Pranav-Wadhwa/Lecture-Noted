@@ -1,2 +1,3 @@
 Flask
 gunicorn
+git+git://github.com/jdepoix/youtube-transcript-api.git
