@@ -11,10 +11,35 @@
 
   <script defer src="/__/firebase/8.3.1/firebase-app.js"></script>
 
-
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/landing.css">
 </head>
 
 <body>
+  <div class="Landing">
+    <a href="/" class="nav-link">
+      <img src="assets/logo.svg" />
+    </a>
+
+    <h1 class="Landing-title">Lecture Noted</h1>
+    <h2 class="Landing-subtitle">Generate smart notes from YouTube lectures in just seconds.</h2>
+
+    <img src="assets/landing-illustration.svg" class="Landing-img" />
+
+    <div class="Landing-inputContainer">
+      <input class="Landing-field" placeholder="Enter the YouTube link for your lecture..."/ id="text-field">
+
+      <button class="Landing-submit" id="go-btn">
+        Get Notes
+      </button>
+    </div>
+
+    <button class="Landing-demoButton" id="demo-btn">
+      or use a demo video.
+    </button>
+  </div>
+
+  <script src="scripts/landing.js"></script>
 
 </body>
 

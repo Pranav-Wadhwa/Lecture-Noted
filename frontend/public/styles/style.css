@@ -4,7 +4,9 @@
 
   font-family: 'Inter', sans-serif;
 
-  yellow (main): #DFB61F;
+  yellow (main): #FFC706;
+  yellow-dark (main-dark): #EBB706;
+  yellow-light (main-light): #FFE385;
 
   Tablet resize:
   @media (max-width: 991px)
@@ -17,11 +19,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-    --main: #dfb61f;
+    --main: #FFC706;
+    --main-dark: #EBB706;
+    --main-light: #FFE385;
 }
 
 html {
-    font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
     border: 0;
@@ -37,6 +40,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 h1,
@@ -56,4 +60,17 @@ a {
 button {
     outline: none;
     border: none;
+    cursor: pointer;
+    background: none;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-link {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    height: 75px;
 }
