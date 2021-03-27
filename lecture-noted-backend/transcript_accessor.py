@@ -1,6 +1,8 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 # pip install youtube_transcript_api
 # 	https://pypi.org/project/youtube-transcript-api/
+#import os
+#os.environ["PAFY_BACKEND"] = "internal"
 import pafy
 # pip install python-youtube
 # 	https://pypi.org/project/python-youtube/

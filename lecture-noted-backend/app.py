@@ -32,9 +32,9 @@ def notes(vid):
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
-    print(data)
+    metadata = trans.get_metadata(vid)
 
-    return {"response": data}
+    return {"response": data, "metadata": metadata}
 
 #TODO
 #Method to take youtube vid, returns transcript

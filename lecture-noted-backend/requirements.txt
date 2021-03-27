@@ -2,3 +2,5 @@ Flask
 gunicorn
 youtube-transcript-api
 openai
+youtube_dl
+pafy
