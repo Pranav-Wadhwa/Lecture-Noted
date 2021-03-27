@@ -1,4 +1,6 @@
 import openai
+import os
+
 try:
     from credentials import CREDENTIALS
 except:
