@@ -19,5 +19,5 @@ video_coding_adventures = 'bqtqltqcQhw'
 video_crash_course_bool = 'gI-qXk7XojA'
 video_crash_course_disease = '1PLBmUVYYeg'
 
-trans = get_transcript(video_crash_course_disease)
-print(trans)
+# trans = get_transcript(video_crash_course_disease)
+# print(trans)
