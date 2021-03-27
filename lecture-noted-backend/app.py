@@ -1,5 +1,13 @@
 from flask import Flask
+import os
+
+try:
+    from credentials import CREDENTIALS
+except:
+    CREDENTIALS = os.environ
+
 from credentials import CREDENTIALS
+import transcript_accessor as trans
 
 app = Flask(__name__)
 
@@ -9,8 +17,8 @@ def index():
 
 #returns text from youtube video
 @app.route('/process/<string:vid>')
-def video():
-    return "text"
+def video(vid):
+    return trans.get_transcript(vid)
 
 #TODO
 #Method to take youtube vid, returns transcript
