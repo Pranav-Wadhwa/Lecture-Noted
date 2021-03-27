@@ -6,7 +6,6 @@ try:
 except:
     CREDENTIALS = os.environ
 
-from credentials import CREDENTIALS
 import transcript_accessor as trans
 import video_summarizer as vid_sum
 
