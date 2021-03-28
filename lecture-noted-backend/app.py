@@ -12,6 +12,7 @@ except:
 import transcript_accessor as trans
 import video_summarizer as vid_sum
 import docx_generator as docx_gen
+import keyword_finder as kf
 
 app = Flask(__name__)
 
@@ -45,9 +46,11 @@ def mp3notes():
     for chunk in chunks:
         data = data + vid_sum.summarize(chunk)
 
+
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
+    data = data + [{"type": "image", "data": item} for item in kf.get_images(transcript)]
 
     response = jsonify({"response": data, "metadata": {"filename": rawurl+"?"+extension}})
 

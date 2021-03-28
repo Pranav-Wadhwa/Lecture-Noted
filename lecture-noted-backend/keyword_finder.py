@@ -5,6 +5,12 @@ import requests
 import urllib
 import json
 
+try:
+    from credentials import CREDENTIALS
+except:
+    CREDENTIALS = os.environ
+
+key = CREDENTIALS["pixabay-api"]
 
 r = Rake(punctuations='“”–’,.!\'', ranking_metric=Metric.WORD_DEGREE, max_length=2)
 
