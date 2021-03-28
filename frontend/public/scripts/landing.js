@@ -30,6 +30,7 @@ function updateButton() {
     goButton.disabled = id.length == 0;
 }
 
-textField.onkeypress = updateButton;
+textField.addEventListener('input', updateButton);
+textField.addEventListener('propertychange', updateButton);
 
 updateButton();
