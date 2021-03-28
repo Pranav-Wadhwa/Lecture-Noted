@@ -2,4 +2,8 @@ Flask
 gunicorn
 youtube-transcript-api
 openai
-docx
+youtube_dl
+pafy
+SpeechRecognition
+requests
+python-docx

@@ -1,11 +1,38 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 # pip install youtube_transcript_api
 # 	https://pypi.org/project/youtube-transcript-api/
+#import os
+#os.environ["PAFY_BACKEND"] = "internal"
 import pafy
 # pip install pafy
 # 	https://pypi.org/project/pafy/
 
+import requests
+import speech_recognition as sr
+
+
 CHUNK_LENGTH = 300
+
+def get_mp3_transcript(url, path):
+    #print(url)
+    response = requests.get(url)
+    #print(response)
+    with open(path, 'wb') as f:
+        f.write(response.content)
+        #print(response.content)
+
+    r = sr.Recognizer()
+    with sr.AudioFile(path) as source:
+        audio_text = r.record(source)
+
+        text = r.recognize_google(audio_text, language="en-IN")
+
+        #print(text)
+
+        return text
+
+
+
 
 def get_transcript(video_id):
 	raw = YouTubeTranscriptApi.get_transcript(video_id)
@@ -30,7 +57,7 @@ def chunk(text):
 
 
 def get_metadata(video_id):
-	url = "https://www.youtube.com/watch?v=%s" % video_crash_course_bool
+	url = "https://www.youtube.com/watch?v=%s" % video_id
 	video = pafy.new(url)
 
 	obj = {
@@ -41,6 +68,8 @@ def get_metadata(video_id):
 		'duration': video.duration,
 		'likes': video.likes,
 		'dislikes': video.dislikes,
+		# 'published': video.published,
+		# 'thumbnail': video.thumb,
 		# 'description': video.description, # for some reason this throws an error
 	}
 
