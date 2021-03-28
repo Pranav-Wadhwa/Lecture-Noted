@@ -14,7 +14,7 @@ import video_summarizer as vid_sum
 import docx_generator as docx_gen
 import keyword_finder as kf
 
-MAX_PROCESS_TIME = 13
+MAX_PROCESS_TIME = 10
 
 app = Flask(__name__)
 
@@ -65,7 +65,7 @@ def notes(vid):
     
     # chunks = trans.chunk(transcript)
     chunks, times = trans.get_chunky_transcript(vid)
-    print(chunks)
+    #print(chunks)
 
     if(chunks is None):
         response = jsonify({"response": "no transcript"})
@@ -82,8 +82,8 @@ def notes(vid):
             break
         bullets = vid_sum.summarize(chunks[i])
 
-        print(bullets)
-        print(times)
+        #print(bullets)
+        #print(times)
         if(bullets is None):
             continue
 
