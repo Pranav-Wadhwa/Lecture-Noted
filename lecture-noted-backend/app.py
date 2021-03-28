@@ -87,6 +87,8 @@ def notes(vid):
         if(bullets is None):
             continue
 
+        yield " "
+
         #    idk if we want to do this
         # if len(bullets) == 1:
         #     bullets = vid_sum.summarize(chunks[i])
