@@ -18,7 +18,9 @@ def index():
 #returns text from youtube video, vid is id of youtube video
 @app.route('/transcript/<string:vid>')
 def transcript(vid):
-    return trans.get_transcript(vid)
+    response = trans.get_transcript(vid)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/notes/<string:vid>')
 def notes(vid):
@@ -34,7 +36,10 @@ def notes(vid):
 
     metadata = trans.get_metadata(vid)
 
-    return {"response": data, "metadata": metadata}
+    response = {"response": data, "metadata": metadata}
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 #TODO
 #Method to take youtube vid, returns transcript
