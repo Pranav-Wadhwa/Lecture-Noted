@@ -3,9 +3,9 @@
 
 Lecture Noted generates smart notes that enrich your learning experience from lecture videos on Youtube. It provides concise bullet points that cross reference to the video as well as graphics that are related to the topic. 
 
-![logo.png](logo.png)
+<img src="https://github.com/Pranav-Wadhwa/Lecture-Noted/raw/main/logo.png" height="300px" />
 
-Try it out [https://lecturenoted.tech/](https://lecturenoted.tech/)!
+Try it out [https://lecturenoted.tech](https://lecturenoted.tech)!
 
 ### Features
 
