@@ -60,15 +60,28 @@ def mp3notes():
 
 @app.route('/notes/<string:vid>')
 def notes(vid):
-    transcript = trans.get_transcript(vid)
-    chunks = trans.chunk(transcript)
+    # transcript = trans.get_transcript(vid)
+    # chunks = trans.chunk(transcript)
+    chunks, times = get_chunky_transcript(vid)
 
     data = []
-    for chunk in chunks:
-        data = data + vid_sum.summarize(chunk)
+    for i in range(len(chunks)):
+        bullets = vid_sum.summarize(chunks[i])
 
-    for i in range(0, len(data)):
-        data[i] = {"type": "text", "data": data[i]}
+        #    idk if we want to do this
+        # if len(bullets) == 1:
+        #     bullets = vid_sum.summarize(chunks[i])
+
+        data.append({'type': 'text', 'data': bullets[0], 'time': times[i]})
+        for bullet in bullets[1:]:
+            data.append({'type': 'text', 'data': bullet})
+
+    # data = []
+    # for chunk in chunks:
+    #     data = data + vid_sum.summarize(chunk)
+
+    # for i in range(0, len(data)):
+    #     data[i] = {"type": "text", "data": data[i]}
 
     data = data + [{"type": "image", "data": item} for item in kf.get_images(transcript)]
 
