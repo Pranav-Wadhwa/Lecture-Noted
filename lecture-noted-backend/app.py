@@ -82,6 +82,9 @@ def notes(vid):
             break
         bullets = vid_sum.summarize(chunks[i])
 
+        print(bullets)
+        print(times)
+
         #    idk if we want to do this
         # if len(bullets) == 1:
         #     bullets = vid_sum.summarize(chunks[i])
