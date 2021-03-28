@@ -70,6 +70,8 @@ def notes(vid):
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
+    data = data + [{"type": "image", "data": item} for item in kf.get_images(transcript)]
+
     metadata = trans.get_metadata(vid)
 
     response = jsonify({"response": data, "metadata": metadata})
