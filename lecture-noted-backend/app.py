@@ -87,7 +87,7 @@ def notes(vid):
         if(bullets is None):
             continue
 
-        yield " "
+        #yield " "
 
         #    idk if we want to do this
         # if len(bullets) == 1:
