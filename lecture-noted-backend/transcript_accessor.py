@@ -1,11 +1,11 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 # pip install youtube_transcript_api
-# 	https://pypi.org/project/youtube-transcript-api/
+#   https://pypi.org/project/youtube-transcript-api/
 #import os
 #os.environ["PAFY_BACKEND"] = "internal"
 import pafy
 # pip install pafy
-# 	https://pypi.org/project/pafy/
+#   https://pypi.org/project/pafy/
 
 import requests
 import speech_recognition as sr
@@ -33,18 +33,45 @@ def get_mp3_transcript(url, path):
 
 
 
+# returns [(chunk, start_time)]
+def get_chunky_transcript(video_id):
+    raw = YouTubeTranscriptApi.get_transcript(video_id)
+    chunks = []
+    times = []
+    cur_chunk = ''
+    cur_len = 0
 
+    for line in raw:
+        text = strip_text(line['text'])
+
+        if cur_len + text.count(' ') > CHUNK_LENGTH:
+            chunks.append(cur_chunk)
+            cur_len = 0
+            cur_chunk = ''
+
+        if cur_len == 0:
+            times.append(str(line['start']))
+
+        cur_chunk += text + ' '
+        cur_len += text.count(' ')
+
+    # after loop add last bit
+    chunks.append(cur_chunk)
+
+    return chunks, times
+
+# depreciated
 def get_transcript(video_id):
-	raw = YouTubeTranscriptApi.get_transcript(video_id)
-	trans = ''
+    raw = YouTubeTranscriptApi.get_transcript(video_id)
+    trans = ''
 
-	for i in raw:
-		trans += strip_text(i['text']) + ' '
+    for i in raw:
+        trans += strip_text(i['text']) + ' '
 
-	return trans
+    return trans
 
 def strip_text(text):
-	return text.replace('\n', ' ').replace('\t', ' ')
+    return text.replace('\n', ' ').replace('\t', ' ')
 
 def chunk(text):
     text = text.split(" ")
@@ -57,23 +84,23 @@ def chunk(text):
 
 
 def get_metadata(video_id):
-	url = "https://www.youtube.com/watch?v=%s" % video_id
-	video = pafy.new(url)
+    url = "https://www.youtube.com/watch?v=%s" % video_id
+    video = pafy.new(url)
 
-	obj = {
-		'title': video.title,
-		'rating': video.rating,
-		'viewcount': video.viewcount,
-		'author': video.author,
-		'duration': video.duration,
-		'likes': video.likes,
-		'dislikes': video.dislikes,
-		# 'published': video.published,
-		# 'thumbnail': video.thumb,
-		# 'description': video.description, # for some reason this throws an error
-	}
+    obj = {
+        'title': video.title,
+        'rating': video.rating,
+        'viewcount': video.viewcount,
+        'author': video.author,
+        'duration': video.duration,
+        'likes': video.likes,
+        'dislikes': video.dislikes,
+        # 'published': video.published,
+        # 'thumbnail': video.thumb,
+        # 'description': video.description, # for some reason this throws an error
+    }
 
-	return obj
+    return obj
 
 
 video_coding_adventures = 'bqtqltqcQhw'
@@ -82,5 +109,5 @@ video_crash_course_disease = '1PLBmUVYYeg'
 
 # print(get_metadata(video_crash_course_bool))
 
-# trans = get_transcript(video_crash_course_disease)
-# print(trans)
+# chunks, times = get_chunky_transcript(video_crash_course_disease)
+# print(chunks, times)

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 import os
 import urllib
 import json
@@ -12,6 +12,7 @@ except:
 import transcript_accessor as trans
 import video_summarizer as vid_sum
 import docx_generator as docx_gen
+import keyword_finder as kf
 
 app = Flask(__name__)
 
@@ -45,9 +46,11 @@ def mp3notes():
     for chunk in chunks:
         data = data + vid_sum.summarize(chunk)
 
+
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
+    data = data + [{"type": "image", "data": item} for item in kf.get_images(transcript)]
 
     response = jsonify({"response": data, "metadata": {"filename": rawurl+"?"+extension}})
 
@@ -57,15 +60,30 @@ def mp3notes():
 
 @app.route('/notes/<string:vid>')
 def notes(vid):
-    transcript = trans.get_transcript(vid)
-    chunks = trans.chunk(transcript)
+    # transcript = trans.get_transcript(vid)
+    # chunks = trans.chunk(transcript)
+    chunks, times = get_chunky_transcript(vid)
 
     data = []
-    for chunk in chunks:
-        data = data + vid_sum.summarize(chunk)
+    for i in range(len(chunks)):
+        bullets = vid_sum.summarize(chunks[i])
 
-    for i in range(0, len(data)):
-        data[i] = {"type": "text", "data": data[i]}
+        #    idk if we want to do this
+        # if len(bullets) == 1:
+        #     bullets = vid_sum.summarize(chunks[i])
+
+        data.append({'type': 'text', 'data': bullets[0], 'time': times[i]})
+        for bullet in bullets[1:]:
+            data.append({'type': 'text', 'data': bullet})
+
+    # data = []
+    # for chunk in chunks:
+    #     data = data + vid_sum.summarize(chunk)
+
+    # for i in range(0, len(data)):
+    #     data[i] = {"type": "text", "data": data[i]}
+
+    data = data + [{"type": "image", "data": item} for item in kf.get_images(transcript)]
 
     metadata = trans.get_metadata(vid)
 

@@ -7,3 +7,6 @@ pafy
 SpeechRecognition
 requests
 python-docx
+nltk
+rake_nltk
+summa

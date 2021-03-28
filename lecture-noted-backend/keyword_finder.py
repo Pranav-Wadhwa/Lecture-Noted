@@ -4,7 +4,16 @@ from summa import keywords
 import requests
 import urllib
 import json
+import os
 
+import nltk
+
+try:
+    from credentials import CREDENTIALS
+except:
+    CREDENTIALS = os.environ
+
+key = CREDENTIALS["pixabay-api"]
 
 r = Rake(punctuations='“”–’,.!\'', ranking_metric=Metric.WORD_DEGREE, max_length=2)
 
@@ -35,7 +44,7 @@ def get_keywords(text):
 
 	print(rake_phrases, textrank_words)
 
-	return final_words
+	return final_words # consider returning rake_phrases
 	
 def pixabay_images(search):
 	encoded = urllib.parse.urlencode({'q':search})
