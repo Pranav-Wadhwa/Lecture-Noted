@@ -127,3 +127,33 @@ Add back in if it's possible to get the image
     top: 6px;
     position: absolute;
 }
+
+.Notes-shareLink {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 22px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.Notes-shareIcon {
+    flex: 0 0 44px;
+    height: 24px;
+}
+
+.Notes-shareLink:hover {
+    width: 175px;
+}
+
+.Notes-shareText {
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+}
