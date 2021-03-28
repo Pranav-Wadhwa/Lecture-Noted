@@ -4,6 +4,7 @@ from summa import keywords
 import requests
 import urllib
 import json
+import os
 
 try:
     from credentials import CREDENTIALS
