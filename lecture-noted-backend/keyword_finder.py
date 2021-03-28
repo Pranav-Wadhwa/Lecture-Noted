@@ -8,6 +8,7 @@ import os
 
 import nltk
 nltk.download('stopwords')
+nltk.download('punkt')
 
 try:
     from credentials import CREDENTIALS
