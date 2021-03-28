@@ -36,6 +36,10 @@ def get_mp3_transcript(url, path):
 # returns [(chunk, start_time)]
 def get_chunky_transcript(video_id):
     raw = YouTubeTranscriptApi.get_transcript(video_id)
+    #try:
+    #    raw = YouTubeTranscriptApi.get_transcript(video_id)
+    #except:
+    #    return None, None
     chunks = []
     times = []
     cur_chunk = ''
@@ -62,7 +66,10 @@ def get_chunky_transcript(video_id):
 
 # depreciated
 def get_transcript(video_id):
-    raw = YouTubeTranscriptApi.get_transcript(video_id)
+    try:
+        raw = YouTubeTranscriptApi.get_transcript(video_id)
+    except:
+        return -1
     trans = ''
 
     for i in raw:
