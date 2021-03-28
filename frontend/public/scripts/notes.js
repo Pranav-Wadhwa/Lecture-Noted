@@ -5,6 +5,7 @@ const title = document.querySelector('#title');
 const creatorName = document.querySelector('#creator-name');
 const watchButton = document.querySelector('#watch-btn');
 const textContainer = document.querySelector('#text-container');
+const exportButton = document.querySelector('#export-btn');
 
 var isTesting = false;
 
@@ -40,7 +41,6 @@ function getNotes() {
         return res.json();
     })
     .then(function(result) {
-        console.log(result);
         title.innerHTML = result.metadata.title;
         creatorName.innerHTML = result.metadata.author;
         watchButton.href = 'https://youtube.com/watch?v=' + videoId;
@@ -52,6 +52,9 @@ function getNotes() {
                 textContainer.appendChild(bullet);
             }
         });
+        result.metadata.videoId = videoId;
+        const origData = JSON.stringify(result);
+        exportButton.href = `https://lecture-noted-backend.herokuapp.com/docx?data=${origData}`;
         hideAnimation();
     })
     .catch(function(error) {
