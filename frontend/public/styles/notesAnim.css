@@ -10,8 +10,15 @@
     opacity: 1;
 }
 
+.Notes-animSubtitle {
+    font-weight: 400;
+    opacity: 0.6;
+    font-size: 16px;
+    margin-top: 16px;
+}
+
 .Notes-loader {
-    --dark: #FFC706;
+    --dark: #ffc706;
     --light: rgba(0, 0, 0, 0.1);
 
     margin-top: 32px;
@@ -23,14 +30,17 @@
     border-bottom: 8px solid var(--light);
     border-radius: 60px;
 
-    animation: spin 1.1s infinite linear;
+    animation: spin 1s infinite linear;
 }
 
 @keyframes spin {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    65% {
+        transform: rotate(300deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
