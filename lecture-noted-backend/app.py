@@ -14,7 +14,7 @@ import video_summarizer as vid_sum
 import docx_generator as docx_gen
 import keyword_finder as kf
 
-MAX_PROCESS_TIME = 10
+MAX_PROCESS_TIME = 9
 
 app = Flask(__name__)
 
