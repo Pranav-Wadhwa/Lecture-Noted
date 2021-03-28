@@ -9,3 +9,4 @@ requests
 python-docx
 rake_nltk
 summa
+nltk
