@@ -2,3 +2,4 @@ Flask
 gunicorn
 youtube-transcript-api
 openai
+docx

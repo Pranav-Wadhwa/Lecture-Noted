@@ -1,5 +1,7 @@
-from flask import Flask
+from flask import Flask, request, render_template, send_file
 import os
+import json
+from io import BytesIO
 
 try:
     from credentials import CREDENTIALS
@@ -8,6 +10,7 @@ except:
 
 import transcript_accessor as trans
 import video_summarizer as vid_sum
+import docx_generator as docx_gen
 
 app = Flask(__name__)
 
@@ -35,6 +38,15 @@ def notes(vid):
     print(data)
 
     return {"response": data}
+
+@app.route('/docx')
+def generate_doc():
+    data = json.loads(request.args.get('data'))
+    document = docx_gen.get_document(data)
+    fs = BytesIO()
+    document.save(fs)
+    fs.seek(0)
+    return send_file(fs, as_attachment=True, attachment_filename="notes.docx")
 
 #TODO
 #Method to take youtube vid, returns transcript
