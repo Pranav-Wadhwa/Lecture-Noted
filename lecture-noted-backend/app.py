@@ -67,7 +67,6 @@ def notes(vid):
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
-<<<<<<< HEAD
     metadata = trans.get_metadata(vid)
 
     response = jsonify({"response": data, "metadata": metadata})
@@ -81,9 +80,6 @@ def testing():
 
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-=======
-    return {"response": data}
->>>>>>> 718da2aa246a8b42ca3af3f534f6f04c06f770f4
 
 @app.route('/docx')
 def generate_doc():
