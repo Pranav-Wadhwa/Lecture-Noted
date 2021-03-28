@@ -32,7 +32,7 @@ def chunk(text):
 
 
 def get_metadata(video_id):
-	url = "https://www.youtube.com/watch?v=%s" % video_crash_course_bool
+	url = "https://www.youtube.com/watch?v=%s" % video_id
 	video = pafy.new(url)
 
 	obj = {
