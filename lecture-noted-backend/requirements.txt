@@ -6,3 +6,4 @@ youtube_dl
 pafy
 SpeechRecognition
 requests
+docx

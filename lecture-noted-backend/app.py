@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 import os
 import urllib
+import json
+from io import BytesIO
 
 try:
     from credentials import CREDENTIALS
@@ -9,6 +11,7 @@ except:
 
 import transcript_accessor as trans
 import video_summarizer as vid_sum
+import docx_generator as docx_gen
 
 app = Flask(__name__)
 
@@ -64,6 +67,7 @@ def notes(vid):
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
+<<<<<<< HEAD
     metadata = trans.get_metadata(vid)
 
     response = jsonify({"response": data, "metadata": metadata})
@@ -77,6 +81,18 @@ def testing():
 
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+=======
+    return {"response": data}
+>>>>>>> 718da2aa246a8b42ca3af3f534f6f04c06f770f4
+
+@app.route('/docx')
+def generate_doc():
+    data = json.loads(request.args.get('data'))
+    document = docx_gen.get_document(data)
+    fs = BytesIO()
+    document.save(fs)
+    fs.seek(0)
+    return send_file(fs, as_attachment=True, attachment_filename="notes.docx")
 
 #TODO
 #Method to take youtube vid, returns transcript
