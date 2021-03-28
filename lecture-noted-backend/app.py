@@ -84,6 +84,8 @@ def notes(vid):
 
         print(bullets)
         print(times)
+        if(bullets is None):
+            continue
 
         #    idk if we want to do this
         # if len(bullets) == 1:
