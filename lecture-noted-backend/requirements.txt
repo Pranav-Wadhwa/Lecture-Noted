@@ -4,3 +4,5 @@ youtube-transcript-api
 openai
 youtube_dl
 pafy
+SpeechRecognition
+requests

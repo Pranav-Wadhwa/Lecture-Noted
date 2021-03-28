@@ -7,7 +7,32 @@ import pafy
 # pip install pafy
 # 	https://pypi.org/project/pafy/
 
+import requests
+import speech_recognition as sr
+
+
 CHUNK_LENGTH = 300
+
+def get_mp3_transcript(url, path):
+    #print(url)
+    response = requests.get(url)
+    #print(response)
+    with open(path, 'wb') as f:
+        f.write(response.content)
+        #print(response.content)
+
+    r = sr.Recognizer()
+    with sr.AudioFile(path) as source:
+        audio_text = r.record(source)
+
+        text = r.recognize_google(audio_text, language="en-IN")
+
+        #print(text)
+
+        return text
+
+
+
 
 def get_transcript(video_id):
 	raw = YouTubeTranscriptApi.get_transcript(video_id)

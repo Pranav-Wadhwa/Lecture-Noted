@@ -4,6 +4,8 @@ credentials.py
 #Other non-needed files
 .DS_Store
 __pycache__
+*.wav
+*.mp3
 
 
 # Logs
