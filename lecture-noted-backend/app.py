@@ -35,8 +35,6 @@ def notes(vid):
     for i in range(0, len(data)):
         data[i] = {"type": "text", "data": data[i]}
 
-    print(data)
-
     return {"response": data}
 
 @app.route('/docx')
