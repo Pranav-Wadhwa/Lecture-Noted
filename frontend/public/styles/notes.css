@@ -157,3 +157,13 @@ Add back in if it's possible to get the image
     color: black;
     white-space: nowrap;
 }
+
+.Notes-image {
+    max-width: 100%;
+    margin-bottom: 16px;
+}
+
+.Notes-intextLink {
+    margin-right: 4px;
+    color: var(--main-dark);
+}

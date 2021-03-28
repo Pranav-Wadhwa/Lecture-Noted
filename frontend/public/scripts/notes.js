@@ -32,11 +32,10 @@ function getNotes() {
         location.href = '/';
         return;
     }
-    const url =  isTesting ? 'https://lecture-noted-backend.herokuapp.com/testing' : 'https://lecture-noted-backend.herokuapp.com/notes/' + videoId;
+    const url =  isTesting ? 'https://lecture-noted-backend.herokuapp.com/testingv2' : 'https://lecture-noted-backend.herokuapp.com/notes/' + videoId;
     const opts = {
         method: 'GET',
     }
-    console.log('Getting notes for ' + videoId);
     fetch(url, opts).then(function(res) {
         return res.json();
     })
@@ -44,12 +43,31 @@ function getNotes() {
         title.innerHTML = result.metadata.title;
         creatorName.innerHTML = result.metadata.author;
         watchButton.href = 'https://youtube.com/watch?v=' + videoId;
+        var addedImage = false;
         result.response.forEach((obj) => {
             if (obj.type === 'text') {
                 const bullet = document.createElement('div');
                 bullet.innerHTML = obj.data;
                 bullet.classList.add('Notes-bullet');
+                if ('time' in obj) {
+                    const link = document.createElement('a');
+                    const time = Math.round(obj.time);
+                    var seconds = time % 60;
+                    seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+                    const minutes = Math.trunc(time / 60);
+                    link.innerHTML = `[${minutes}:${seconds}]`;
+                    link.href = `https://youtu.be/p_o4aY7xkXg?t=${time}`;
+                    link.classList.add('Notes-intextLink');
+                    bullet.insertBefore(link, bullet.firstChild);
+                }
                 textContainer.appendChild(bullet);
+            } 
+            else if (obj.type === 'image' && !addedImage) {
+                const image = document.createElement('img');
+                image.src = obj.data.image;
+                image.classList.add('Notes-image');
+                textContainer.insertBefore(image, textContainer.firstChild)
+                addedImage = true;
             }
         });
         result.metadata.videoId = videoId;
