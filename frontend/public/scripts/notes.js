@@ -56,7 +56,7 @@ function getNotes() {
                     seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
                     const minutes = Math.trunc(time / 60);
                     link.innerHTML = `[${minutes}:${seconds}]`;
-                    link.href = `https://youtu.be/p_o4aY7xkXg?t=${time}`;
+                    link.href = `https://youtu.be/${videoId}?t=${time}`;
                     link.classList.add('Notes-intextLink');
                     bullet.insertBefore(link, bullet.firstChild);
                 }
