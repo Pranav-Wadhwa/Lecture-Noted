@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 import os
 
 try:
@@ -18,7 +18,7 @@ def index():
 #returns text from youtube video, vid is id of youtube video
 @app.route('/transcript/<string:vid>')
 def transcript(vid):
-    response = trans.get_transcript(vid)
+    response = jsonify(trans.get_transcript(vid))
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
@@ -36,7 +36,7 @@ def notes(vid):
 
     metadata = trans.get_metadata(vid)
 
-    response = {"response": data, "metadata": metadata}
+    response = jsonify({"response": data, "metadata": metadata})
 
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
