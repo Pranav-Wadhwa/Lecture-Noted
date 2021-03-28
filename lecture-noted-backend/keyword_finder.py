@@ -6,6 +6,9 @@ import urllib
 import json
 import os
 
+import nltk
+nltk.download('stopwords')
+
 try:
     from credentials import CREDENTIALS
 except:
