@@ -19,7 +19,7 @@ r = Rake(punctuations='“”–’,.!\'', ranking_metric=Metric.WORD_DEGREE, ma
 
 def get_images(text):
 	words = get_keywords(text)
-	print(words)
+	#print(words)
 	images = []
 	for word in words:
 		image_url = pixabay_images(word)
@@ -42,7 +42,7 @@ def get_keywords(text):
 		if word in rake_phrases:
 			final_words.append(word)
 
-	print(rake_phrases, textrank_words)
+	#print(rake_phrases, textrank_words)
 
 	return final_words[0:min(len(final_words), 4)] # consider returning rake_phrases
         

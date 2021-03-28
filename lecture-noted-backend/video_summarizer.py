@@ -37,6 +37,8 @@ def process_text(text):
 		point = text[:ind].strip()
 		text = text[ind + len(cur_str):]
 
+		if(len(point)==0):
+                    continue
 		point = clean_point(point)
 		points.append(point)
 
@@ -48,10 +50,10 @@ def process_text(text):
 	return points
 
 def clean_point(text):
-	if text[0] == '-' or text[0] == '*':
-		text = text[1:].strip()
-	text = text.replace('\t', '')
-	return text
+        if text[0] == '-' or text[0] == '*':
+            text = text[1:].strip()
+        text = text.replace('\t', '')
+        return text
 
 #####
 # Testing

@@ -14,6 +14,8 @@ import video_summarizer as vid_sum
 import docx_generator as docx_gen
 import keyword_finder as kf
 
+MAX_PROCESS_TIME = 13
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -60,12 +62,24 @@ def mp3notes():
 
 @app.route('/notes/<string:vid>')
 def notes(vid):
-    transcript = trans.get_transcript(vid)
+    
     # chunks = trans.chunk(transcript)
     chunks, times = trans.get_chunky_transcript(vid)
+    print(chunks)
+
+    if(chunks is None):
+        response = jsonify({"response": "no transcript"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
+    transcript = ''.join(chunks)
+
+    #print("done chunking")
 
     data = []
     for i in range(len(chunks)):
+        if((float)(times[i])/60 > MAX_PROCESS_TIME):
+            break
         bullets = vid_sum.summarize(chunks[i])
 
         #    idk if we want to do this
