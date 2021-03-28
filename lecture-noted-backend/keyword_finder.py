@@ -44,7 +44,9 @@ def get_keywords(text):
 
 	print(rake_phrases, textrank_words)
 
-	return final_words # consider returning rake_phrases
+	return final_words[0:min(len(final_words), 4)] # consider returning rake_phrases
+        
+	#return rake_phrases[0:min(len(rake_phrases), 4)]
 	
 def pixabay_images(search):
 	encoded = urllib.parse.urlencode({'q':search})
