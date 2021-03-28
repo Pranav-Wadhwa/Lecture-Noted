@@ -41,6 +41,13 @@ def notes(vid):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route('/testing')
+def testing():
+    response = jsonify({"metadata":{"author":"minutephysics","dislikes":601,"duration":"00:01:25","likes":18193,"rating":4.872087,"title":"Minute Physics: What is Gravity?","viewcount":2809263},"response":[{"data":"Gravity is a long range attractive force between all objects with mass.","type":"text"},{"data":"Every massive object attracts every other in the universe.","type":"text"},{"data":"The strength of gravity decreases by the square of the distance between two objects \u2013 so if you're twice as far away, gravity is only one fourth as strong!","type":"text"}]})
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
 #TODO
 #Method to take youtube vid, returns transcript
 #Method to summarize transcript to GPT-3
