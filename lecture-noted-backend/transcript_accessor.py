@@ -44,7 +44,7 @@ def get_metadata(video_id):
 		'likes': video.likes,
 		'dislikes': video.dislikes,
 		'published': video.published,
-		'thumbnail': video.thumb,
+		# 'thumbnail': video.thumb,
 		# 'description': video.description, # for some reason this throws an error
 	}
 
