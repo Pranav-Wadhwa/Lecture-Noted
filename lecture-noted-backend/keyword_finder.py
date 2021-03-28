@@ -1,6 +1,48 @@
-from rake_nltk import Rake 
+from rake_nltk import Metric, Rake 
+from summa import keywords
 
-r = Rake()
+import requests
+import urllib
+import json
+
+
+r = Rake(punctuations='“”–’,.!\'', ranking_metric=Metric.WORD_DEGREE, max_length=2)
+
+def get_images(text):
+	words = get_keywords(text)
+
+	images = []
+	for i in words:
+		images.append(pixabay_images(words))
+
+	return images
+
+
+def get_keywords(text):
+	r.extract_keywords_from_text(text)
+
+	rake_phrases = r.get_ranked_phrases()
+	textrank_words = keywords.keywords(text)
+
+	final_words = []
+
+	for word in textrank_words:
+		if word in rake_phrases:
+			final_words.append(word)
+
+	return word
+	
+def pixabay_images(search):
+	encoded = urllib.parse.urlencode({'q':search})
+	url = 'https://pixabay.com/api/?key=20893913-450d8427454318b9dafb155ca&%s' % encoded
+	image_json = requests.get(url).text
+	image_dict = json.loads(image_json)
+	hits = image_dict['hits']
+	if len(hits) == 0:
+		return None
+	else:
+		return hits[0]['largeImageURL']
+
 
 text = '''Hi, I’m Carrie Anne and welcome to Crash Course Computer 
 Science! Today we start our journey up the ladder of abstraction, where we 
@@ -20,6 +62,9 @@ can also write binary as 1’s and 0’s instead of true’s and false’s – t
 just different expressions of the same signal – but we’ll talk more about that 
 in the next episode.'''
 
-r.extract_keywords_from_text(text)
+text = '''Gravity is a long range attractive force between all objects with mass.
+Every massive object attracts every other in the universe.
+The strength of gravity decreases by the square of the distance between two objects - 
+so if you're twice as far away, gravity is only one fourth as strong!'''
 
-print(r.get_ranked_phrases())
+print(get_images(text))
