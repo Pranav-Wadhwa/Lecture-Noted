@@ -21,7 +21,7 @@ goButton.addEventListener('click', function (event) {
 });
 
 demoButton.addEventListener('click', function(event) {
-    textField.value = 'https://www.youtube.com/watch?v=p_o4aY7xkXg';
+    textField.value = 'https://www.youtube.com/watch?v=RqCqUEu9nY4';
     updateButton();
 });
 
