@@ -24,22 +24,37 @@
       <img src="assets/logo.svg" />
     </a>
 
+    <div class="Landing-spacer"></div>
+
     <h1 class="Landing-title">Lecture Noted</h1>
     <h2 class="Landing-subtitle">Generate smart notes from YouTube lectures in just seconds.</h2>
 
     <img src="assets/landing-illustration.svg" class="Landing-img" />
 
     <div class="Landing-inputContainer">
-      <input class="Landing-field" placeholder="Enter the YouTube link for your lecture..."/ id="text-field">
+      <span class="Landing-label">YouTube Lecture URL:</span>
+
+      <input class="Landing-field" placeholder="Enter the YouTube link for your lecture..."/ id="text-field" disabled value="https://www.youtube.com/watch?v=p_o4aY7xkXg">
 
       <button class="Landing-submit" id="go-btn">
         Get Notes
       </button>
     </div>
 
-    <button class="Landing-demoButton" id="demo-btn">
+    <p class="Landing-info">
+      Lecture Noted is currently only working with a demo URL due to GPT-3 usage limits. However, the response is still unedited AI output.
+    </p>
+
+    <div class="Landing-spacer"></div>
+
+    <div class="Landing-footer">
+      Made with ♥ by <a href="https://vinaybhaip.com" target="_blank">Vinay Bhaip</a>, <a href="https://github.com/randomerz/" target="_blank">Daniel Carr</a>, and <a href="https://pranavwadhwa.com" target="_blank">Pranav Wadhwa</a>. Winner of Best Educational Hack at HooHacks 2021. View <a href="https://github.com/pranav-wadhwa/lecture-noted">source code</a>.
+    </div>
+
+    <!-- Removed because the demo video is the only one being used. -->
+    <!-- <button class="Landing-demoButton" id="demo-btn">
       or use a demo video.
-    </button>
+    </button> -->
   </div>
 
   <script src="scripts/landing.js"></script>

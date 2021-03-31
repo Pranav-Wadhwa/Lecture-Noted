@@ -1,6 +1,6 @@
 .Landing {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -22,26 +22,64 @@
 }
 
 .Landing-img {
-    max-height: 300px;
+    max-height: 250px;
     margin: 32px;
 }
 
 .Landing-inputContainer {
     max-width: 600px;
     width: 100%;
-    height: 50px;
+    height: 64px;
     display: flex;
     align-self: center;
+    position: relative;
 }
 
 .Landing-field {
     font-size: 16px;
     flex: 1;
-    border-radius: 25px 0 0 25px;
+    border-radius: 32px 0 0 32px;
     border: none;
     background: rgba(0, 0, 0, 0.07);
-    padding: 0 25px;
+    padding: 32px 32px 16px;
     margin: 0;
+    color: black;
+    -webkit-text-fill-color: #000000;
+    opacity: 1; 
+}
+
+.Landing-field[disabled]::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.Landing-label {
+    position: absolute;
+    font-size: 12px;
+    left: 32px;
+    top: 12px;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+.Landing-info {
+    opacity: 0.7;
+    margin-top: 16px;
+    width: 100%;
+    max-width: 536px;
+    font-size: 12px;
+}
+
+.Landing-spacer {
+    flex: 1 0 64px;
+}
+
+.Landing-footer {
+    font-size: 14px;
+    text-align: center;
+}
+
+.Landing-footer > a {
+    color: black;
 }
 
 .Landing-field:focus {
@@ -54,7 +92,7 @@
     background: var(--main);
     flex: 0 0 125px;
     margin-left: -2px;
-    border-radius: 0 25px 25px 0;
+    border-radius: 0 32px 32px 0;
     transition: all 0.3s;
 }
 
@@ -79,4 +117,28 @@
 
 .Landing-demoButton:hover {
     opacity: 1;
+}
+
+@media (max-width: 767px) {
+
+    .Landing-inputContainer {
+        flex-direction: column;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .Landing-field {
+        border-radius: 16px 16px 0 0;
+        padding: 32px 16px 16px;
+    }
+
+    .Landing-submit {
+        flex: 0 0 44px;
+        border-radius: 0 0 16px 16px;
+        margin: 0;
+    }
+
+    .Landing-label {
+        left: 16px;
+    }
 }
