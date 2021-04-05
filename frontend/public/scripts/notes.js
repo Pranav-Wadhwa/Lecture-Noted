@@ -7,7 +7,7 @@ const watchButton = document.querySelector('#watch-btn');
 const textContainer = document.querySelector('#text-container');
 const exportButton = document.querySelector('#export-btn');
 
-var isTesting = false;
+var isTesting = true;
 
 function hideAnimation() {
     animContainer.style.transition = 'all 0.3s';
@@ -32,6 +32,7 @@ function getNotes() {
         location.href = '/';
         return;
     }
+    // Post-hackathon note: isTesting must be set to true as the other endpoint is no longer active.
     const url =  isTesting ? 'https://lecture-noted-backend.herokuapp.com/testingv2' : 'https://lecture-noted-backend.herokuapp.com/notes/' + videoId;
     const opts = {
         method: 'GET',
@@ -76,7 +77,7 @@ function getNotes() {
         hideAnimation();
     })
     .catch(function(error) {
-        // location.href = '/';
+        alert(error);
     });
 }
 

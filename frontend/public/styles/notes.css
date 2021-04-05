@@ -16,6 +16,7 @@
     align-items: flex-start;
 
     padding: 32px 32px;
+    margin-top: 64px;
 }
 
 .Notes-titleDesc {
@@ -166,4 +167,20 @@ Add back in if it's possible to get the image
 .Notes-intextLink {
     margin-right: 4px;
     color: var(--main-dark);
+}
+
+@media (max-width: 991px) { 
+    .Notes-headerCreator {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Notes-spacer {
+        display: none;
+    }
+
+    .Notes-videoLink {
+        align-self: flex-start;
+        margin-top: 16px;
+    }
 }

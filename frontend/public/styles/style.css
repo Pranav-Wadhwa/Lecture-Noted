@@ -74,3 +74,9 @@ button {
     left: 32px;
     height: 75px;
 }
+
+@media (max-width: 991px) {
+    .nav-link > img {
+        max-height: 44px;
+    }
+}
